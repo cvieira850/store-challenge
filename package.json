@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Caio Vieira <contato@caiovieira.com.br>",
   "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
   "devDependencies": {
     "@types/jest": "^26.0.24",
     "@types/node": "^16.3.2",
