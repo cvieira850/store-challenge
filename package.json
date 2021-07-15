@@ -5,7 +5,10 @@
   "author": "Caio Vieira <contato@caiovieira.com.br>",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest --passWithNoTests",
+    "test:watch": "yarn test -- --watch",
+    "test:staged": "yarn test -- --findRelatedTests",
+    "test:cit": "yarn test -- --coverage"
   },
   "devDependencies": {
     "@types/jest": "^26.0.24",
