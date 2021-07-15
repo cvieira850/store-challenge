@@ -1,5 +1,5 @@
 import { LoadProductList } from './load-product-list'
-import { HttpGetClientSpy } from '../../test/mock-http-client'
+import { HttpGetClientSpy } from '@/data/test/mock-http-client'
 import faker from 'faker'
 
 type SutTypes = {
