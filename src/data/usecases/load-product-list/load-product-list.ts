@@ -1,4 +1,6 @@
 import { HttpGetClient } from '@/data/protocols/http/http-get-client'
+import { HttpStatusCode } from '@/data/protocols/http/http-response'
+import { UnexpectedError } from '@/domain/errors/unexpectedError-error'
 
 export class LoadProductList {
   constructor (
@@ -7,6 +9,10 @@ export class LoadProductList {
   ) { }
 
   async loadAll (): Promise<void> {
-    await this.httpGetClient.get(this.url)
+    const httpResponse = await this.httpGetClient.get(this.url)
+    switch (httpResponse.statusCode) {
+      case HttpStatusCode.ok: break
+      default: throw new UnexpectedError()
+    }
   }
 }
