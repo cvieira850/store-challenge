@@ -3,6 +3,7 @@ import { HttpGetClientSpy } from '@/data/test/mock-http-client'
 import { HttpStatusCode } from '@/data/protocols/http/http-response'
 import { UnexpectedError } from '@/domain/errors/unexpectedError-error'
 import { ProductModel } from '@/domain/models/product-model'
+import { mockProductsModel } from '@/domain/test/mock-product'
 import faker from 'faker'
 
 type SutTypes = {
@@ -52,5 +53,16 @@ describe('LoadProductList', () => {
     }
     const promise = sut.loadAll()
     await expect(promise).rejects.toThrow(new UnexpectedError())
+  })
+
+  test('Should return ProductList if HttpGetClient returns 200', async () => {
+    const { sut, httpGetClientSpy } = makeSut()
+    const httpResult = mockProductsModel()
+    httpGetClientSpy.response = {
+      statusCode: HttpStatusCode.ok,
+      body: httpResult
+    }
+    const result = await sut.loadAll()
+    expect(result).toEqual(httpResult)
   })
 })
