@@ -1,5 +1,5 @@
 import { ProductModel } from '@/domain/models/product-model'
 
-export interface LoadProductList {
+export interface LoadProductListInterface {
   loadAll(): Promise<ProductModel[]>
 }
