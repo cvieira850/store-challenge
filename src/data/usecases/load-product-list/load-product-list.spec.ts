@@ -1,5 +1,7 @@
 import { LoadProductList } from './load-product-list'
 import { HttpGetClientSpy } from '@/data/test/mock-http-client'
+import { HttpStatusCode } from '@/data/protocols/http/http-response'
+import { UnexpectedError } from '@/domain/errors/unexpectedError-error'
 import faker from 'faker'
 
 type SutTypes = {
@@ -22,5 +24,32 @@ describe('LoadProductList', () => {
     const { sut, httpGetClientSpy } = makeSut(url)
     await sut.loadAll()
     expect(httpGetClientSpy.url).toBe(url)
+  })
+
+  test('Should throw Unexpected if HttpGetClient returns 400', async () => {
+    const { sut, httpGetClientSpy } = makeSut()
+    httpGetClientSpy.response = {
+      statusCode: HttpStatusCode.badRequest
+    }
+    const promise = sut.loadAll()
+    await expect(promise).rejects.toThrow(new UnexpectedError())
+  })
+
+  test('Should throw Unexpected if HttpGetClient returns 404', async () => {
+    const { sut, httpGetClientSpy } = makeSut()
+    httpGetClientSpy.response = {
+      statusCode: HttpStatusCode.notFound
+    }
+    const promise = sut.loadAll()
+    await expect(promise).rejects.toThrow(new UnexpectedError())
+  })
+
+  test('Should throw Unexpected if HttpGetClient returns 500', async () => {
+    const { sut, httpGetClientSpy } = makeSut()
+    httpGetClientSpy.response = {
+      statusCode: HttpStatusCode.serverError
+    }
+    const promise = sut.loadAll()
+    await expect(promise).rejects.toThrow(new UnexpectedError())
   })
 })
