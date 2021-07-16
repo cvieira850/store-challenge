@@ -2,15 +2,16 @@ import { LoadProductList } from './load-product-list'
 import { HttpGetClientSpy } from '@/data/test/mock-http-client'
 import { HttpStatusCode } from '@/data/protocols/http/http-response'
 import { UnexpectedError } from '@/domain/errors/unexpectedError-error'
+import { ProductModel } from '@/domain/models/product-model'
 import faker from 'faker'
 
 type SutTypes = {
   sut: LoadProductList
-  httpGetClientSpy: HttpGetClientSpy
+  httpGetClientSpy: HttpGetClientSpy<ProductModel[]>
 }
 
 const makeSut = (url: string = faker.internet.url()): SutTypes => {
-  const httpGetClientSpy = new HttpGetClientSpy()
+  const httpGetClientSpy = new HttpGetClientSpy<ProductModel[]>()
   const sut = new LoadProductList(url, httpGetClientSpy)
   return {
     sut,
