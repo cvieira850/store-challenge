@@ -1,8 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import ListProducts from '@/presentation/pages/list-products/list-products'
+import { Router } from '@/presentation/components'
 
 ReactDOM.render(
-  <ListProducts />,
+  <Router />,
   document.getElementById('main')
 )

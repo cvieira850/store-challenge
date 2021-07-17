@@ -1,7 +1,7 @@
 import React from 'react'
 import Styles from './list-products-styles.scss'
 
-const ListProducts: React.FC = () => {
+const ProductList: React.FC = () => {
   return (
     <ul className={Styles.productlist}>
       <li >
@@ -27,4 +27,4 @@ const ListProducts: React.FC = () => {
   )
 }
 
-export default ListProducts
+export default ProductList
