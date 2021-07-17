@@ -1,4 +1,4 @@
-import { ProductModel } from '../models/product-model'
+import { ProductModel } from '@/domain/models'
 import faker from 'faker'
 
 export const mockProductModel = (): ProductModel => ({

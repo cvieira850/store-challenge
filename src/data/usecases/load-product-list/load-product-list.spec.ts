@@ -1,9 +1,9 @@
 import { LoadProductList } from './load-product-list'
-import { HttpGetClientSpy } from '@/data/test/mock-http-client'
-import { HttpStatusCode } from '@/data/protocols/http/http-response'
-import { UnexpectedError } from '@/domain/errors/unexpectedError-error'
-import { ProductModel } from '@/domain/models/product-model'
-import { mockProductsModel } from '@/domain/test/mock-product'
+import { HttpGetClientSpy } from '@/data/test'
+import { HttpStatusCode } from '@/data/protocols/http'
+import { ProductModel } from '@/domain/models'
+import { UnexpectedError } from '@/domain/errors'
+import { mockProductsModel } from '@/domain/test'
 import faker from 'faker'
 
 type SutTypes = {

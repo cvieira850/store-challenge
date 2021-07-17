@@ -1,4 +1,4 @@
-import { HttpResponse } from './http-response'
+import { HttpResponse } from '.'
 
 export interface HttpGetClient<T> {
   get(url: string): Promise<HttpResponse<T>>

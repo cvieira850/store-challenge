@@ -1,4 +1,4 @@
-import { ProductModel } from '@/domain/models/product-model'
+import { ProductModel } from '@/domain/models'
 
 export interface LoadProductListInterface {
   loadAll(): Promise<ProductModel[]>

@@ -1,8 +1,7 @@
-import { HttpGetClient } from '@/data/protocols/http/http-get-client'
-import { HttpStatusCode } from '@/data/protocols/http/http-response'
-import { UnexpectedError } from '@/domain/errors/unexpectedError-error'
-import { ProductModel } from '@/domain/models/product-model'
-import { LoadProductListInterface } from '@/domain/usecases/load-product-list'
+import { HttpGetClient, HttpStatusCode } from '@/data/protocols/http'
+import { LoadProductListInterface } from '@/domain/usecases'
+import { UnexpectedError } from '@/domain/errors'
+import { ProductModel } from '@/domain/models'
 
 export class LoadProductList implements LoadProductListInterface {
   constructor (
